@@ -18,6 +18,18 @@ public abstract class Animal {
 	}
 }
 
+public class Dog extends Animal {
+	public Dog(string n){
+		super(n);
+	}
+}
+
+public class Cat extends Animal {
+	public Cat(string n){
+		super(n);
+	}
+}
+
 public class animalQueue {
 	LinkedList<Dog> dogs = new LinkedList<Dog>;
 	LinkedList<Cat> cats = new LinkedList<Cat>;
@@ -36,12 +48,30 @@ public class animalQueue {
 		}
 	}
 	
+	public Dog dequeDog(){
+		return dogs.remove();
+	}
+	
+	public Cat dequeCat(){
+		return cats.remove();
+	}
+	
 	public Animal dequeAny(Animal a){
-		if (dog.size == 0){
-			
+		if (dogs.size == 0){
+			return dequeCat();
 		}
-		else if (cat.size == 0){
-			
+		else if (cats.size == 0){
+			return dequeDog();
+		}
+	
+		Dog d = dogs.head;
+		Cat c = cats.head;
+		
+		if(d.isOlderThan(c)){
+			return dequeDog();
+		}
+		else{
+			return dequeCat();
 		}
 	}
 }
